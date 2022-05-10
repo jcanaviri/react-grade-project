@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
-import { supabase } from './supabase'
+import { supabase } from '../supabase'
 
 import Avatar from './Avatar'
 
-const Account = ({ session }) => {
+export default ({ session }) => {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)
@@ -117,5 +117,3 @@ const Account = ({ session }) => {
     </div>
   )
 }
-
-export default Account

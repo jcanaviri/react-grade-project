@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import { supabase } from './supabase'
+import { supabase } from '../supabase'
 
-export default function Auth() {
+export default () => {
   const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
 
@@ -24,7 +24,9 @@ export default function Auth() {
     <div className="row flex flex-center">
       <div className="col-6 form-widget" aria-live="polite">
         <h1 className="header">Supabase + React</h1>
-        <p className="description">Sign in via magic link with your email below</p>
+        <p className="description">
+          Sign in via magic link with your email below
+        </p>
         {loading ? (
           'Sending magic link...'
         ) : (
