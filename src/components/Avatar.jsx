@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '../supabase'
+
 import VisuallyHidden from '@reach/visually-hidden'
 
 export default ({ url, size, onUpload }) => {
@@ -59,7 +60,6 @@ export default ({ url, size, onUpload }) => {
       <img
         src={avatarUrl ? avatarUrl : `https://place-hold.it/${size}x${size}`}
         alt={avatarUrl ? 'Avatar' : 'No image'}
-        className="avatar image"
         style={{ height: size, width: size }}
       />
       {uploading ? (

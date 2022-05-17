@@ -1,27 +1,37 @@
-import { useState, useEffect } from 'react'
-import { supabase } from './supabase'
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
+// Auth Provider
+import { AuthProvider } from './context/AuthContext'
+
+// Protected Route
+import ProtectedRoute from './components/ProtectedRoute'
+
+// Pages
+import Home from './pages/Home'
 import Auth from './pages/Auth'
 import Account from './pages/Account'
 
 export default () => {
-  const [session, setSession] = useState(null)
-
-  useEffect(() => {
-    setSession(supabase.auth.session())
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
-
   return (
-    <div className="container">
-      {!session ? (
-        <Auth />
-      ) : (
-        <Account key={session.user.id} session={session} />
-      )}
-    </div>
+    <BrowserRouter>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+        <li>
+          <Link to="/account">Account</Link>
+        </li>
+      </ul>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Auth />} />
+          <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+        </Routes>
+      </AuthProvider>
+    </BrowserRouter>
   )
 }

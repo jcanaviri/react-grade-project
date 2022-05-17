@@ -1,5 +1,5 @@
 export default () => {
   return (
-    <div>Landing</div>
+    <div>This is the Home Page</div>
   )
 }

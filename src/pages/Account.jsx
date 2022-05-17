@@ -1,22 +1,28 @@
 import { useState, useEffect } from 'react'
+
 import { supabase } from '../supabase'
 
-import Avatar from './Avatar'
+// Custom authentication hook
+import { useAuth } from '../context/AuthContext'
 
-export default ({ session }) => {
+// Components
+import Avatar from '../components/Avatar'
+
+export default () => {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)
   const [avatar_url, setAvatarUrl] = useState(null)
 
+  const { user, signOut } = useAuth()
+
   useEffect(() => {
     getProfile()
-  }, [session])
+  }, [user])
 
   const getProfile = async () => {
     try {
       setLoading(true)
-      const user = supabase.auth.user()
 
       let { data, error, status } = await supabase
         .from('profiles')
@@ -45,7 +51,6 @@ export default ({ session }) => {
 
     try {
       setLoading(true)
-      const user = supabase.auth.user()
 
       const updates = {
         id: user.id,
@@ -70,12 +75,12 @@ export default ({ session }) => {
   }
 
   return (
-    <div aria-live="polite">
+    <>
       {loading ? (
         'Saving ...'
       ) : (
-        <form onSubmit={updateProfile} className="form-widget">
-          <div>Email: {session.user.email}</div>
+        <form onSubmit={updateProfile}>
+          <div>Email: {user.email}</div>
           <div>
             <label htmlFor="username">Name</label>
             <input
@@ -105,15 +110,15 @@ export default ({ session }) => {
           />
 
           <div>
-            <button className="button block primary" disabled={loading}>
+            <button disabled={loading}>
               Update profile
             </button>
           </div>
         </form>
       )}
-      <button type="button" className="button block" onClick={() => supabase.auth.signOut()}>
+      <button onClick={() => signOut()}>
         Sign Out
       </button>
-    </div>
+    </>
   )
 }
