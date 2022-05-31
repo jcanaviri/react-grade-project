@@ -6,9 +6,9 @@ import { supabase } from '../supabase'
 import { useAuth } from '../context/AuthContext'
 
 // Components
-import Avatar from '../components/Avatar'
+import { Avatar } from '../components/Avatar'
 
-export default () => {
+export const Account = () => {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)

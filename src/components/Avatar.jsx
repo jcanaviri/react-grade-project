@@ -3,7 +3,7 @@ import { supabase } from '../supabase'
 
 import VisuallyHidden from '@reach/visually-hidden'
 
-export default ({ url, size, onUpload }) => {
+export const Avatar = ({ url, size, onUpload }) => {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
 
