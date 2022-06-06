@@ -4,12 +4,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 
 // Protected Route
-import { ProtectedRoute } from './components/ProtectedRoute'
+import { ProtectedRoute } from './utils/ProtectedRoute'
 
 // Pages
 import { Home } from './pages/Home'
 import { Auth } from './pages/Auth'
-import { Account } from './pages/Account'
+import { Dashboard } from './pages/Dashboard'
 
 export default () => {
   return (
@@ -18,7 +18,7 @@ export default () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Auth />} />
-          <Route path="/account" element={<ProtectedRoute><Account /></ProtectedRoute>} />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>

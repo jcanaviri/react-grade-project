@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext'
 // Components
 import { Avatar } from '../components/Avatar'
 
-export const Account = () => {
+export const Dashboard = () => {
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState(null)
   const [website, setWebsite] = useState(null)

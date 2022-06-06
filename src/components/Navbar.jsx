@@ -1,15 +1,19 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
+// Components
 import { MobileMenu } from './MobileMenu'
 import { MobileMenuButton } from './MobileMenuButton'
+
+// Images
+import logo from '../favicon.png'
 
 export const Navbar = ({ linkItems }) => {
   const [toggleMenuNav, setToggleMenuNav] = useState(false)
 
   return (
     <div className="min-h-full sticky top-0 z-50">
-      <nav className="bg-gray-800">
+      <nav className="bg-white shadow-sm">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -18,11 +22,11 @@ export const Navbar = ({ linkItems }) => {
                 <Link to="/" className="flex items-center">
                   <img
                     className="h-8 w-8"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg"
-                    alt="Workflow"
+                    src={logo}
+                    alt="logo"
                   />
-                  <span className="text-gray-300 hover:text-white ml-2 font-bold">
-                    Estimate
+                  <span className="text-slate-600 hover:text-slate-700 ml-2 font-medium">
+                    Estimate App
                   </span>
                 </Link>
               </div>
@@ -35,7 +39,7 @@ export const Navbar = ({ linkItems }) => {
                     <Link
                       to={currLink.to}
                       key={index}
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                      className="text-slate-600 hover:text-slate-700 px-3 py-2 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     >
                       {currLink.title}
                     </Link>
@@ -49,7 +53,7 @@ export const Navbar = ({ linkItems }) => {
             <div className="hidden md:block">
               <Link
                 to="/login"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
               >
                 Ingresar
               </Link>

@@ -9,7 +9,7 @@ export const MobileMenu = ({ linkItems }) => {
           <Link
             to={currLink.to}
             key={index}
-            className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+            className="text-slate-600 hover:text-slate-700  block px-3 py-2 rounded-md text-base font-medium"
           >
             {currLink.title}
           </Link>
@@ -17,12 +17,12 @@ export const MobileMenu = ({ linkItems }) => {
       </div>
       {/* Navigation Links */}
 
-      <div className="pt-3 pb-3 border-t border-gray-700">
-        <div className="px-2 space-y-1">
+      <div className="pt-3 pb-3">
+        <div className="px-2 py-2">
           <div className="block">
             <Link
               to="/login"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
             >
               Ingresar
             </Link>
