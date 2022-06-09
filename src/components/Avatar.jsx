@@ -3,7 +3,9 @@ import { supabase } from '../supabase'
 
 import VisuallyHidden from '@reach/visually-hidden'
 
-export const Avatar = ({ url, size, onUpload }) => {
+import defaultUser from '../assets/default.png'
+
+export const Avatar = ({ url, onUpload, isForUpdating }) => {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
 
@@ -56,28 +58,32 @@ export const Avatar = ({ url, size, onUpload }) => {
   }
 
   return (
-    <div style={{ width: size }} aria-live="polite">
+    <div aria-live="polite">
       <img
-        src={avatarUrl ? avatarUrl : `https://place-hold.it/${size}x${size}`}
+        src={avatarUrl ? avatarUrl : defaultUser}
         alt={avatarUrl ? 'Avatar' : 'No image'}
-        style={{ height: size, width: size }}
+        style={{ height: 32, width: 32 }}
       />
       {uploading ? (
         'Uploading...'
       ) : (
         <>
-          <label className="button primary block" htmlFor="single">
-            Upload an avatar
-          </label>
-          <VisuallyHidden>
-            <input
-              type="file"
-              id="single"
-              accept="image/*"
-              onChange={uploadAvatar}
-              disabled={uploading}
-            />
-          </VisuallyHidden>
+          {isForUpdating && (
+            <>
+              <label className="button primary block" htmlFor="single">
+                Upload an avatar
+              </label>
+              <VisuallyHidden>
+                <input
+                  type="file"
+                  id="single"
+                  accept="image/*"
+                  onChange={uploadAvatar}
+                  disabled={uploading}
+                />
+              </VisuallyHidden>
+            </>
+          )}
         </>
       )}
     </div>

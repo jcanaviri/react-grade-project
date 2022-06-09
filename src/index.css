@@ -10,9 +10,9 @@ body {
   width: 6px;
 }
 *::-webkit-scrollbar-thumb {
-  background-color: #F9A826;
+  background-color: #fef08a;
 }
 *::-webkit-scrollbar-thumb:hover {
-  background-color: #a36c15;
+  background-color: #c6bb6b;
   cursor: pointer;
 }

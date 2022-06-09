@@ -10,6 +10,8 @@ import { ProtectedRoute } from './utils/ProtectedRoute'
 import { Home } from './pages/Home'
 import { Auth } from './pages/Auth'
 import { Dashboard } from './pages/Dashboard'
+import { Projects } from './pages/Projects'
+import { Profile } from './pages/Profile'
 
 export default () => {
   return (
@@ -18,7 +20,10 @@ export default () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Auth />} />
-          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>}>
+            <Route path="projects" element={<ProtectedRoute><Projects /></ProtectedRoute>} />
+            <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+          </Route>
         </Routes>
       </AuthProvider>
     </BrowserRouter>
