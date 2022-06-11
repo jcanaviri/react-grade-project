@@ -8,38 +8,16 @@ import { useAuth } from '../context/AuthContext'
 
 export const Profile = () => {
   const [loading, setLoading] = useState(false)
-  const [username, setUsername] = useState('')
-  const [website, setWebsite] = useState('')
-  const [avatar_url, setAvatarUrl] = useState('')
 
-  const { user } = useAuth()
-
-  useEffect(() => {
-    getProfile()
-  }, [user])
-
-
-  const getProfile = async () => {
-    try {
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username, website, avatar_url`)
-        .eq('id', user.id)
-        .single()
-
-      if (error && status !== 406) {
-        throw error
-      }
-
-      if (data) {
-        setUsername(data.username)
-        setWebsite(data.website)
-        setAvatarUrl(data.avatar_url)
-      }
-    } catch (error) {
-      alert(error.message)
-    }
-  }
+  const {
+    user,
+    username,
+    website,
+    avatar_url,
+    setUsername,
+    setWebsite,
+    setAvatarUrl,
+  } = useAuth()
 
   const updateProfile = async (e) => {
     e.preventDefault()
@@ -56,7 +34,7 @@ export const Profile = () => {
       }
 
       let { error } = await supabase.from('profiles').upsert(updates, {
-        returning: 'minimal'
+        returning: 'minimal',
       })
 
       if (error) throw error
@@ -66,7 +44,7 @@ export const Profile = () => {
       setLoading(false)
     }
   }
-  
+
   return (
     <form onSubmit={updateProfile}>
       <div>Email: {user.email}</div>

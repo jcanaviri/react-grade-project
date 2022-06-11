@@ -1,20 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '../context/AuthContext'
 
-import { supabase } from '../supabase'
-
 import { Avatar } from './Avatar'
 import { UserIconMenu } from './UserIconMenu'
 
-export const Pannel = ({ email, avatar_url, signOut }) => {
+export const Pannel = () => {
   const [menuToggle, setMenuToggle] = useState(false)
-  const [username, setUsername] = useState('')
 
-  const { user } = useAuth()
-
-  useEffect(() => {
-    getProfile()
-  }, [user])
+  const { user, username, avatar_url, signOut } = useAuth()
 
   useEffect(() => {
     const close = (e) => {
@@ -25,27 +18,6 @@ export const Pannel = ({ email, avatar_url, signOut }) => {
     window.addEventListener('keydown', close)
     return () => window.addEventListener('keydown', close)
   }, [])
-
-  const getProfile = async () => {
-    try {
-      let { data, error, status } = await supabase
-        .from('profiles')
-        .select(`username`)
-        .eq('id', user.id)
-        .single()
-
-      if (error && status !== 406) {
-        throw error
-      }
-
-      if (data) {
-        setUsername(data.username)
-      }
-    } catch (error) {
-      alert(error.message)
-    }
-  }
-
 
   const floatingStyles = {
     position: 'absolute',
@@ -75,14 +47,12 @@ export const Pannel = ({ email, avatar_url, signOut }) => {
             className="flex items-center cursor-pointer"
             onClick={() => setMenuToggle((prevState) => !prevState)}
           >
-            <span className="mx-2 text-slate-800">
-              Bienvenido, {username}!
-            </span>
+            <span className="mx-2 text-slate-800 font-bold text-sm">¡Bienvenido, {username}!</span>
             <Avatar url={avatar_url} isForUpdating={false} />
             {menuToggle && (
               <UserIconMenu
                 floatingStyles={floatingStyles}
-                email={email}
+                email={user.email}
                 signOut={signOut}
               />
             )}

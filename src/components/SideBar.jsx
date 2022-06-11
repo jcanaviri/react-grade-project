@@ -1,25 +1,29 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
-// Client of supabase
 import { supabase } from '../supabase'
 
 // Components
 import { UserIconMenu } from './UserIconMenu'
+
+// User Hook
+import { useAuth } from '../context/AuthContext'
 
 // Utilities
 import logo from '../favicon.png'
 import defaultUser from '../assets/default.png'
 import { sidebarItems } from '../utils/DashboardUtilities'
 
-export const SideBar = ({ url, email, signOut }) => {
+export const SideBar = () => {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [menuToggle, setMenuToggle] = useState(false)
   const [listToggle, setListToggle] = useState(false)
 
+  const { user, avatar_url, signOut } = useAuth()
+
   useEffect(() => {
-    if (url) downloadImage(url)
-  }, [url])
+    if (avatar_url) downloadImage(avatar_url)
+  }, [avatar_url])
 
   useEffect(() => {
     const close = (e) => {
@@ -66,17 +70,19 @@ export const SideBar = ({ url, email, signOut }) => {
         </button>
 
         {/* Logo */}
-        <Link
-          to="/dashboard"
-          className="md:block text-left md:pb-2 text-slate-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-2 px-0"
-        >
-          <img
-            className="w-8 h-8 inline-block relative -top-1"
-            src={logo}
-            alt="app logo"
-          />
-          <span className="ml-2">Estimate App</span>
-        </Link>
+        <div className="flex items-center">
+          <Link
+            to="/dashboard"
+            className="md:block text-left md:pb-2 text-slate-600 whitespace-nowrap text-sm uppercase font-bold p-2"
+          >
+            <img
+              className="w-8 h-8 inline-block relative -top-1"
+              src={logo}
+              alt="app logo"
+            />
+            <span className="ml-2">Estimate App</span>
+          </Link>
+        </div>
         {/* Logo */}
 
         {/* user icon */}
@@ -97,7 +103,7 @@ export const SideBar = ({ url, email, signOut }) => {
             {menuToggle && (
               <UserIconMenu
                 floatingStyles={floatingStyles}
-                email={email}
+                email={user.email}
                 signOut={signOut}
               />
             )}
@@ -146,7 +152,7 @@ export const SideBar = ({ url, email, signOut }) => {
                     key={i}
                   >
                     <Link
-                      to={`${listItem.to ? listItem.to: '#'}`}
+                      to={`${listItem.to ? listItem.to : '#'}`}
                       className="text-xs py-3 font-bold block text-slate-800 group-hover:text-slate-900"
                     >
                       <i
@@ -162,14 +168,15 @@ export const SideBar = ({ url, email, signOut }) => {
 
           <hr className="my-4 md:min-w-full border-yellow-300" />
           {/* Close Session */}
-          <a
-            href="#"
-            className="text-slate-800 text-sm block mb-4 px-4 py-2 font-bold rounded border border-transparent hover:bg-yellow-50 hover:border-yellow-300"
-            onClick={() => signOut()}
-          >
-            <i className="bx bx-log-out mr-2 text-slate-800 group-hover:text-slate-500 text-xl relative top-1"></i>
-            Cerrar Sesion
-          </a>
+          <div className="mx-auto">
+            <button
+              className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+              onClick={() => signOut()}
+            >
+              <i className="bx bx-log-out mr-2 text-xl relative top-1"></i>
+              Cerrar Sesion
+            </button>
+          </div>
         </div>
       </div>
     </div>

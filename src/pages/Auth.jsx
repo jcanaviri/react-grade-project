@@ -90,7 +90,7 @@ export const Auth = () => {
                 <div>
                   <button
                     type="submit"
-                    className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 w-full disabled:bg-opacity-70 flex items-center justify-center"
+                    className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 w-full disabled:bg-opacity-70 flex items-center justify-center ${loading && 'cursor-wait'}`}
                     disabled={loading}
                   >
                     {loading ? (
