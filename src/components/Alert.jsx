@@ -1,20 +1,42 @@
-export const Alert = ({ closeAlert }) => {
+export const Alert = ({ message, type, closeAlert }) => {
   return (
     <div
-      className="flex p-4 mb-4 bg-yellow-100 rounded-lg dark:bg-yellow-200"
+      className={`flex p-4 mb-4 
+      ${type === 'info' && 'bg-yellow-100 rounded-lg dark:bg-yellow-200'}
+      ${type === 'danger' && 'bg-red-100 rounded-lg dark:bg-red-200'}
+      ${type === 'success' && 'bg-green-100 rounded-lg dark:bg-green-200'}
+      `}
       role="alert"
     >
-      <div className="ml-3 text-sm font-medium text-yellow-700 dark:text-yellow-800">
-        Un email ha sido enviado a tu correo
+      <div
+        className={`ml-3 text-sm font-medium 
+        ${type === 'info' && 'text-yellow-700 dark:text-yellow-800'}
+        ${type === 'danger' && 'text-red-700 dark:text-red-800'}
+        ${type === 'success' && 'text-green-700 dark:text-green-800'}
+        `}
+      >
+        {message}
       </div>
       <button
         type="button"
-        className="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300"
+        className={`ml-auto -mx-1.5 -my-1.5 p-1.5 rounded-lg inline-flex h-8 w-8 
+        ${
+          type === 'info' &&
+          'bg-yellow-100 text-yellow-500 focus:ring-2 focus:ring-yellow-400 hover:bg-yellow-200'
+        } 
+        ${
+          type === 'danger' &&
+          'bg-red-100 text-red-500 focus:ring-2 focus:ring-red-400 hover:bg-red-200'
+        } 
+        ${
+          type === 'success' &&
+          'bg-green-100 text-green-500 focus:ring-2 focus:ring-green-400 hover:bg-green-200'
+        } 
+        `}
         data-dismiss-target="#alert-4"
         aria-label="Close"
         onClick={closeAlert}
       >
-        <span className="sr-only">Close</span>
         <svg
           className="w-5 h-5"
           fill="currentColor"

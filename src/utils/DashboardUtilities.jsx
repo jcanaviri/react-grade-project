@@ -1,46 +1,50 @@
 export const sidebarItems = [
   {
-    title: 'Proyectos',
+    title: 'Tus Proyectos',
+    icon: 'bx bxs-briefcase',
     links: [
-      { title: 'Dashboard', to: '/dashboard', icon: 'bx bx-briefcase-alt-2' },
-      { title: 'Projects', to: '/dashboard/projects', icon: 'bx bx-briefcase-alt-2' },
-      { title: 'Profile', to: '/dashboard/profile', icon: 'bx bx-briefcase-alt-2' },
-      { title: 'Maps', icon: 'bx bx-briefcase-alt-2' },
+      { title: 'Crear un Proyecto', to: '/dashboard', icon: 'bx bx-folder-plus' },
+      { title: 'Lista de Proyectos', to: '/dashboard/projects', icon: 'bx bx-list-ul' },
+      { title: 'Proyectos eliminados', to: '', icon: 'bx bx-trash' },
     ],
   },
   {
-    title: 'Tutorial',
+    title: 'Estimaciones',
+    icon: 'bx bxs-hard-hat',
     links: [
-      { title: 'Login', icon: 'bx bxs-chalkboard' },
-      { title: 'Register', icon: 'bx bxs-chalkboard' },
+      { title: 'Nueva estimación', to: '', icon: 'bx bxs-file-plus' },
     ],
   },
   {
-    title: 'Conceptos Básicos',
+    title: 'Etiquetas',
+    icon: 'bx bxs-purchase-tag-alt',
     links: [
-      { title: 'Landig Page', icon: 'bx bxs-chalkboard' },
-      { title: 'Profile Page', icon: 'bx bxs-chalkboard' },
+      { title: 'Crear nueva etiqueta', to: '', icon: 'bx bx-bookmark-alt-plus' },
+      { title: 'Ver mis etiquetas', to: '', icon: 'bx bx-list-ul' },
     ],
   },
   {
-    title: 'Métricas de Estimación',
+    title: 'Resultados',
+    icon: 'bx bxs-folder',
     links: [
-      { title: 'Styles', icon: 'bx bx-package' },
-      { title: 'CSS Components', icon: 'bx bx-package' },
+      { title: 'Ver Resultados', to: '', icon: 'bx bxs-folder-open' },
+      { title: 'Lista de Resultados', to: '', icon: 'bx bx-list-ul' },
     ],
   },
   {
-    title: 'Métodos de Estimación',
+    title: 'Conceptos y Teoría',
+    icon: 'bx bxs-graduation',
     links: [
-      { title: 'Styles', icon: 'bx bx-package' },
-      { title: 'CSS Components', icon: 'bx bx-package' },
+      { title: 'Reseña Historica', to: '', icon: 'bx bx-book-reader' },
+      { title: 'Métrica', to: '', icon: 'bx bx-package' },
+      { title: 'Modelos', to: '', icon: 'bx bx-border-none' },
     ],
   },
   {
     title: 'Documentación',
+    icon: 'bx bxs-file-doc',
     links: [
-      { title: 'Styles', icon: 'bx bx-package' },
-      { title: 'CSS Components', icon: 'bx bx-package' },
+      { title: 'Ir a documentación', to: '', icon: 'bx bx-link-alt' },
     ],
   },
 ]

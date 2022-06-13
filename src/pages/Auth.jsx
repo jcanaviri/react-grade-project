@@ -46,8 +46,14 @@ export const Auth = () => {
           <Navbar linkItems={linkItems} />
 
           <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8">
-              {showAlert && <Alert closeAlert={() => setShowAlert(false)} />}
+            <div className="max-w-md w-full space-y-8 border border-yellow-100 rounded-lg shadow-sm p-8">
+              {showAlert && (
+                <Alert
+                  message="Un email ha sido enviado a tu correo"
+                  type="info"
+                  closeAlert={() => setShowAlert(false)}
+                />
+              )}
 
               <div>
                 <img className="mx-auto h-12 w-auto" src={logo} alt="logo" />
@@ -90,7 +96,9 @@ export const Auth = () => {
                 <div>
                   <button
                     type="submit"
-                    className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 w-full disabled:bg-opacity-70 flex items-center justify-center ${loading && 'cursor-wait'}`}
+                    className={`focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 w-full disabled:bg-opacity-70 flex items-center justify-center ${
+                      loading && 'cursor-wait'
+                    }`}
                     disabled={loading}
                   >
                     {loading ? (

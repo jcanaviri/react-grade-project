@@ -94,7 +94,7 @@ export const SideBar = () => {
                   <img
                     src={avatarUrl ? avatarUrl : defaultUser}
                     alt={avatarUrl ? 'Avatar' : 'No image'}
-                    className="w-full rounded-full align-middle border-none"
+                    className="w-8 h-8 rounded-full align-middle border-none"
                     onClick={() => setMenuToggle((prevState) => !prevState)}
                   />
                 </span>
@@ -119,10 +119,9 @@ export const SideBar = () => {
           <div className="flex justify-end">
             <button
               type="button"
-              className="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 dark:bg-yellow-200 dark:text-yellow-600 dark:hover:bg-yellow-300 md:hidden"
+              className="ml-auto -mx-1.5 -my-1.5 bg-yellow-100 text-yellow-500 rounded-lg focus:ring-2 focus:ring-yellow-400 p-1.5 hover:bg-yellow-200 inline-flex h-8 w-8 md:hidden"
               onClick={() => setListToggle(false)}
             >
-              <span className="sr-only">Close</span>
               <svg
                 className="w-5 h-5"
                 fill="currentColor"
@@ -141,10 +140,12 @@ export const SideBar = () => {
           {/* Sidebar List */}
           {sidebarItems.map((sidebarItem, index) => (
             <div key={index}>
-              <hr className="my-4 md:min-w-full border-yellow-300" />
-              <h6 className="md:min-w-full text-slate-900 text-xs capitalize font-bold block pt-1 pb-4">
+              <p className="md:min-w-full uppercase text-slate-800 text-xs font-bold flex items-center justify-between tracking-wide p-2">
+                {/* prettier-ignore */}
+                <i className={`${sidebarItem.icon} mr-2 text-lg group-hover:text-slate-900`}></i>
                 {sidebarItem.title}
-              </h6>
+                <i className="bx bx-chevron-down text-lg cursor-pointer"></i>
+              </p>
               <ul className="md:flex-col md:min-w-full flex flex-col list-none">
                 {sidebarItem.links.map((listItem, i) => (
                   <li
@@ -153,10 +154,10 @@ export const SideBar = () => {
                   >
                     <Link
                       to={`${listItem.to ? listItem.to : '#'}`}
-                      className="text-xs py-3 font-bold block text-slate-800 group-hover:text-slate-900"
+                      className="text-xs py-3 font-semibold block text-slate-800 group-hover:text-slate-900"
                     >
                       <i
-                        className={`${listItem.icon} mr-2 text-sm opacity-75 group-hover:text-slate-900`}
+                        className={`${listItem.icon} mr-2 text-sm group-hover:text-slate-900`}
                       ></i>
                       {listItem.title}
                     </Link>
@@ -170,10 +171,10 @@ export const SideBar = () => {
           {/* Close Session */}
           <div className="mx-auto">
             <button
-              className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
+              className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 flex items-center"
               onClick={() => signOut()}
             >
-              <i className="bx bx-log-out mr-2 text-xl relative top-1"></i>
+              <i className="bx bx-log-out mr-2 text-xl"></i>
               Cerrar Sesion
             </button>
           </div>

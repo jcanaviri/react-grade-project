@@ -13,7 +13,7 @@ export const DashboardLayout = () => {
       {/* Menu Panel */}
       <Pannel />
 
-      <div className="relative md:ml-64 top-20">
+      <div className="relative md:ml-64">
         <Outlet />
       </div>
     </>

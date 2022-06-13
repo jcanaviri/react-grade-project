@@ -23,6 +23,7 @@ export default () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Auth />} />
+          {/* prettier-ignore */}
           <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
             <Route path='' element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>
             <Route path="projects" element={<ProtectedRoute><Projects /></ProtectedRoute>} />
