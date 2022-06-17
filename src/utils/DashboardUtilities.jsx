@@ -3,9 +3,8 @@ export const sidebarItems = [
     title: 'Tus Proyectos',
     icon: 'bx bxs-briefcase',
     links: [
-      { title: 'Crear un Proyecto', to: '/dashboard', icon: 'bx bx-folder-plus' },
-      { title: 'Lista de Proyectos', to: '/dashboard/projects', icon: 'bx bx-list-ul' },
-      { title: 'Proyectos eliminados', to: '', icon: 'bx bx-trash' },
+      { title: 'Crear un Proyecto', to: '/dashboard/projects', icon: 'bx bx-folder-plus' },
+      { title: 'Lista de Proyectos', to: '/dashboard/projects/list', icon: 'bx bx-list-ul' },
     ],
   },
   {

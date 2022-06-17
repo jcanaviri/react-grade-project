@@ -22,15 +22,15 @@ export const Alert = ({ message, type, closeAlert }) => {
         className={`ml-auto -mx-1.5 -my-1.5 p-1.5 rounded-lg inline-flex h-8 w-8 
         ${
           type === 'info' &&
-          'bg-yellow-100 text-yellow-500 focus:ring-2 focus:ring-yellow-400 hover:bg-yellow-200'
+          'bg-yellow-100 text-yellow-500 focus:ring-2 focus:ring-yellow-400 hover:bg-yellow-200 border border-yellow-500'
         } 
         ${
           type === 'danger' &&
-          'bg-red-100 text-red-500 focus:ring-2 focus:ring-red-400 hover:bg-red-200'
+          'bg-red-100 text-red-500 focus:ring-2 focus:ring-red-400 hover:bg-red-200 border border-red-500'
         } 
         ${
           type === 'success' &&
-          'bg-green-100 text-green-500 focus:ring-2 focus:ring-green-400 hover:bg-green-200'
+          'bg-green-100 text-green-500 focus:ring-2 focus:ring-green-400 hover:bg-green-200 border border-green-500'
         } 
         `}
         data-dismiss-target="#alert-4"

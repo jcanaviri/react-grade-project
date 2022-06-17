@@ -6,7 +6,7 @@ import main from '../assets/main.svg'
 import teacher from '../assets/teacher.svg'
 
 // Components
-import { Navbar } from '../components/Navbar'
+import { Navbar } from '../components'
 
 // Auth hook
 import { useAuth } from '../context/AuthContext'

@@ -5,8 +5,7 @@ import { Navigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 
 // Components
-import { Navbar } from '../components/Navbar'
-import { Alert } from '../components/Alert'
+import { Navbar, Alert } from '../components'
 
 // Utilities
 import logo from '../favicon.png'

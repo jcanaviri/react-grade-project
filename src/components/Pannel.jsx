@@ -31,11 +31,11 @@ export const Pannel = () => {
       <div className="w-full mx-auto items-center flex justify-between md:flex-nowrap flex-wrap md:px-10 px-4">
         <form>
           <div className="relative group">
-            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none text-gray-400 group-focus:text-yellow-500 group-hover:text-yellow-500 group-active:text-yellow-500">
-              <i className="bx bx-search-alt"></i>
+            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none text-gray-400 group-focus:text-yellow-500">
+              <i className="bx bx-search-alt group-focus-within:text-yellow-500"></i>
             </div>
             <input
-              type="search"
+              type="text"
               className="block bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 pl-10 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500"
               placeholder="Buscar un Proyecto..."
             />

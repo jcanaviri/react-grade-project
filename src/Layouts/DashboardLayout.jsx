@@ -1,8 +1,7 @@
 import { Outlet } from 'react-router-dom'
 
 // Components
-import { SideBar } from '../components/SideBar'
-import { Pannel } from '../components/Pannel'
+import { SideBar, Pannel } from '../components'
 
 export const DashboardLayout = () => {
   return (
