@@ -8,6 +8,7 @@ import { Pannel } from './Pannel'
 import { SideBar } from './SideBar'
 import { UserIconMenu } from './UserIconMenu'
 import { UserMenu } from './UserMenu'
+import { Modal } from './Modal'
 
 export {
   Alert,
@@ -20,4 +21,5 @@ export {
   SideBar,
   UserIconMenu,
   UserMenu,
+  Modal
 }

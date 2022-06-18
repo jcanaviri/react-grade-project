@@ -1,42 +1,60 @@
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useProjects } from '../context/ProjectContext'
 
 export const ProjectList = () => {
-  const { projects } = useProjects()
+  const [projects, setProjects] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+  const { getAllProjects } = useProjects()
+
+  const loadProjects = async () => {
+    try {
+      const data = await getAllProjects()
+      setProjects(data)
+    } catch (error) {
+      console.log(error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    loadProjects()
+  }, [])
 
   return (
     <>
       <header className="bg-white space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6">
-        <h2 className="font-semibold text-slate-900">Proyectos</h2>
+        <h3 className="font-semibold text-slate-900">Proyectos</h3>
       </header>
       <ul className="p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm leading-6">
-        {projects.map((project) => (
-          <li
-            key={project.id}
-            className="hover:bg-yellow-400 hover:ring-yellow-400 group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm"
-          >
-            <Link to={`/dashboard/projects/${project.id}`}>
-              <div className="grid sm:block lg:grid xl:block grid-cols-2 grid-rows-2 items-center">
-                <div>
-                  <p className="group-hover:text-white font-semibold text-slate-900">
-                    {project.name}
-                  </p>
-                </div>
-                <div>
-                  <p className="group-hover:text-yellow-50">
-                    {project.description}
-                  </p>
-                </div>
-                <div>
-                  <p className="group-hover:text-yellow-50">
-                    Creado el: {project.created_at}
-                  </p>
-                </div>
-              </div>
-            </Link>
-          </li>
-        ))}
+        {isLoading ? (
+          <p>Cargando...</p>
+        ) : (
+          <>
+            {projects.map((project) => (
+              <li
+                key={project.id}
+                className="hover:bg-yellow-400 hover:ring-yellow-400 hover:cursor-pointer group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm"
+              >
+                <Link to={`/dashboard/projects/${project.id}`}>
+                  <div className="flex flex-col">
+                    <p className="group-hover:text-white font-semibold text-slate-900">
+                      {project.name}
+                    </p>
+                    <p className="group-hover:text-yellow-50">
+                      {project.description}
+                    </p>
+                    <p className="group-hover:text-yellow-50">
+                      Creado el: {project.created_at}
+                    </p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </>
+        )}
 
         <li className="flex">
           <Link

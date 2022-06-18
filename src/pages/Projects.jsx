@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
+import buildingImage from '../assets/building.svg'
 
 import { Alert } from '../components/Alert'
 
@@ -68,8 +71,12 @@ export const Projects = () => {
 
   return (
     <>
+      <div className="p-4">
+        <h3 className="font-semibold text-slate-900">Nuevo Proyecto</h3>
+      </div>
+
       {showAlert && (
-        <div className="mx-8 mt-6">
+        <div className="mx-8 mt-4">
           <Alert
             message={alertMessage.message}
             type={alertMessage.type}
@@ -78,12 +85,8 @@ export const Projects = () => {
         </div>
       )}
 
-      <header className="bg-white space-y-4 p-4 sm:px-8 sm:py-6 lg:p-4 xl:px-8 xl:py-6">
-        <h2 className="font-semibold text-slate-900">Nuevo Proyecto</h2>
-      </header>
-
       <div className="mt-10 sm:mt-0">
-        <div className="px-4 md:px-8">
+        <div className="px-4">
           <div className="mt-5 mb-5 md:mt-0 w-full">
             {/* Form begins */}
             {isSaving ? (
@@ -91,7 +94,26 @@ export const Projects = () => {
             ) : (
               <>
                 {formWasUsed ? (
-                  'Ya usaste el formulario'
+                  <>
+                    <h3 className="text-center my-2">
+                      Se ha creado tu proyecto 😁
+                    </h3>
+                    <div className="flex justify-center px-2 md:px-44 py-2 md:py-5">
+                      <img
+                        className="w-full md:w-1/2 h-full"
+                        src={buildingImage}
+                        alt="building"
+                      />
+                    </div>
+                    <div className="flex justify-center">
+                      <Link
+                        to="/dashboard/projects/list"
+                        className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5"
+                      >
+                        Ir a mis proyectos
+                      </Link>
+                    </div>
+                  </>
                 ) : (
                   <form onSubmit={handleSubmit} method="POST">
                     <div className="shadow border overflow-hidden sm:rounded-md">
@@ -114,7 +136,7 @@ export const Projects = () => {
                               type="text"
                               id="project-name"
                               name="project-name"
-                              autoComplete="given-name"
+                              autoComplete="off"
                               placeholder="Nombre proyecto..."
                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500"
                               value={form.name}

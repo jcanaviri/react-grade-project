@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext } from 'react'
 
 import {
   createProjectRequest,
@@ -13,16 +13,7 @@ const ProjectContext = createContext()
 export const useProjects = () => useContext(ProjectContext)
 
 export const ProjectProvider = ({ children }) => {
-  const [projects, setProjects] = useState([])
-  useEffect(() => {
-    ;(async () => {
-      const data = await getAllProjects()
-      setProjects(data)
-    })()
-  }, [])
-
   // CRUD of projects
-  // all the requests are defined in api folder
   const createProject = (project) => createProjectRequest(project)
 
   const getAllProjects = () => getAllProjectsRequest()
@@ -31,10 +22,7 @@ export const ProjectProvider = ({ children }) => {
 
   const updateProject = (id, project) => updateProjectRequest(id, project)
 
-  const deleteProject = async (id) => {
-    const data = await deleteProjectRequest(id)
-    setProjects(projects.filter((p) => p.id !== data[0].id))
-  }
+  const deleteProject = (id) => deleteProjectRequest(id)
 
   return (
     <ProjectContext.Provider
@@ -44,7 +32,6 @@ export const ProjectProvider = ({ children }) => {
         getOneProject,
         updateProject,
         deleteProject,
-        projects,
       }}
     >
       {children}
