@@ -6,6 +6,9 @@ import { AuthProvider } from './context/AuthContext'
 // Projects Provider
 import { ProjectProvider } from './context/ProjectContext'
 
+// Tags Provider
+import { TagProvider } from './context/TagContext'
+
 // Protected Route
 import { ProtectedRoute } from './utils/ProtectedRoute'
 
@@ -13,39 +16,53 @@ import { ProtectedRoute } from './utils/ProtectedRoute'
 import { DashboardLayout } from './Layouts/DashboardLayout'
 
 // Pages
-import { Home } from './pages/Home'
-import { Auth } from './pages/Auth'
-import { Dashboard } from './pages/Dashboard'
-import { Projects } from './pages/Projects'
-import { ProjectList } from './pages/ProjectList'
-import { Profile } from './pages/Profile'
-import { Project } from './pages/Project'
+import {
+  Home,
+  Auth,
+  Profile,
+  Dashboard,
+  Project,
+  Projects,
+  ProjectList,
+  Estimations,
+  Tags,
+} from './pages'
 
 export default () => {
   return (
     <BrowserRouter>
+    
       <AuthProvider>
         <ProjectProvider>
-          
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Auth />} />
-            {/* prettier-ignore */}
-            <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
+          <TagProvider>
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/login" element={<Auth />} />
+              {/* prettier-ignore */}
+              <Route path="/dashboard" element={<ProtectedRoute><DashboardLayout /></ProtectedRoute>}>
               {/* Main Dashboard  */}
               <Route path='' element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>
+
+              <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 
               {/* Projects Routes */}
               <Route path="projects" element={<ProtectedRoute><Projects /></ProtectedRoute>} />
               <Route path="projects/list" element={<ProtectedRoute><ProjectList /></ProtectedRoute>} />
               <Route path="projects/:id" element={<ProtectedRoute><Project /></ProtectedRoute>} />
 
-              <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-            </Route>
-          </Routes>
+              <Route path='estimations' element={<ProtectedRoute><Estimations /></ProtectedRoute>} />
 
+              {/* Tags */}
+              <Route path='tags' element={<ProtectedRoute><Tags /></ProtectedRoute>} />
+
+            </Route>
+            </Routes>
+
+          </TagProvider>
         </ProjectProvider>
       </AuthProvider>
+
     </BrowserRouter>
   )
 }

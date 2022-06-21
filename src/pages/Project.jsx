@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 
 import { useProjects } from '../context/ProjectContext'
 
@@ -102,9 +102,19 @@ export const Project = () => {
       ) : (
         <>
           {/* Details section start */}
-          <h3 className="font-semibold text-slate-900 pt-2 pb-4">
-            Detalles de Projecto
-          </h3>
+
+          <div className="flex justify-between items-center pt-2 pb-4">
+            <h3 className="font-semibold text-slate-900">
+              Detalles de Projecto
+            </h3>
+            <Link
+              to="/dashboard/projects/list"
+              className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5"
+            >
+              Ir a mis proyectos
+            </Link>
+          </div>
+          
           {showAlert && (
             <Alert
               message={alertMessage.message}
@@ -330,16 +340,16 @@ export const Project = () => {
             </form>
           )}
 
-          <hr className="my-4 md:min-w-full border-yellow-50" />
+          <hr className="my-4 md:min-w-full border-yellow-100" />
           {/* Details section ends */}
 
           <h3 className="font-semibold text-slate-900">
             Estimaciones del Projecto
           </h3>
-          <hr className="my-4 md:min-w-full border-yellow-50" />
+          <hr className="my-4 md:min-w-full border-yellow-100" />
 
           <h3 className="font-semibold text-slate-900">Nuevas estimaciones</h3>
-          <hr className="my-4 md:min-w-full border-yellow-50" />
+          <hr className="my-4 md:min-w-full border-yellow-100" />
         </>
       )}
     </div>

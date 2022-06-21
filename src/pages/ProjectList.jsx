@@ -40,14 +40,14 @@ export const ProjectList = () => {
               >
                 <Link to={`/dashboard/projects/${project.id}`}>
                   <div className="flex flex-col">
-                    <p className="group-hover:text-white font-semibold text-slate-900">
+                    <p className="group-hover:text-white font-bold text-slate-900">
                       {project.name}
                     </p>
-                    <p className="group-hover:text-yellow-50">
+                    <p className="font-semibold group-hover:text-yellow-50">
                       {project.description}
                     </p>
                     <p className="group-hover:text-yellow-50">
-                      Creado el: {project.created_at}
+                      <span className='font-semibold'>Creado el:</span> {project.created_at}
                     </p>
                   </div>
                 </Link>

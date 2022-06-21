@@ -11,15 +11,14 @@ export const sidebarItems = [
     title: 'Estimaciones',
     icon: 'bx bxs-hard-hat',
     links: [
-      { title: 'Nueva estimación', to: '', icon: 'bx bxs-file-plus' },
+      { title: 'Nueva estimación', to: '/dashboard/estimations', icon: 'bx bxs-file-plus' },
     ],
   },
   {
-    title: 'Etiquetas',
+    title: 'Tags - Etiquetas',
     icon: 'bx bxs-purchase-tag-alt',
     links: [
-      { title: 'Crear nueva etiqueta', to: '', icon: 'bx bx-bookmark-alt-plus' },
-      { title: 'Ver mis etiquetas', to: '', icon: 'bx bx-list-ul' },
+      { title: 'Crear nueva etiqueta', to: '/dashboard/tags', icon: 'bx bx-bookmark-alt-plus' },
     ],
   },
   {
