@@ -3,15 +3,17 @@ export const sidebarItems = [
     title: 'Tus Proyectos',
     icon: 'bx bxs-briefcase',
     links: [
-      { title: 'Crear un Proyecto', to: '/dashboard/projects', icon: 'bx bx-folder-plus' },
       { title: 'Lista de Proyectos', to: '/dashboard/projects/list', icon: 'bx bx-list-ul' },
+      { title: 'Crear un Proyecto', to: '/dashboard/projects', icon: 'bx bx-folder-plus' },
     ],
   },
   {
     title: 'Estimaciones',
     icon: 'bx bxs-hard-hat',
     links: [
-      { title: 'Nueva estimación', to: '/dashboard/estimations', icon: 'bx bxs-file-plus' },
+      { title: 'Lista de estimaciones', to: '/dashboard/estimations/list', icon: 'bx bx-list-ul' },
+      { title: 'Nueva estimación', to: '/dashboard/estimations', icon: 'bx bx-stopwatch' },
+      // { title: 'Tipos de Estimaciones', to: '/dashboard/estimations-types', icon: 'bx bx-category' } ,
     ],
   },
   {
