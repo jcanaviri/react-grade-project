@@ -11,7 +11,7 @@ import { useAuth } from '../context/AuthContext'
 
 // Utilities
 import logo from '../favicon.png'
-import defaultUser from '../assets/default.png'
+import defaultUser from '../assets/default.svg'
 import { sidebarItems } from '../utils/DashboardUtilities'
 
 export const SideBar = () => {

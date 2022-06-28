@@ -11,6 +11,7 @@ import logo from '../favicon.png'
 export const Profile = () => {
   const [loading, setLoading] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
+  const [updateAvatarUrl, setUpdateAvatarUrl] = useState('')
   const [alertMessage, setAlertMessage] = useState({
     message: '',
     type: '',
@@ -28,20 +29,23 @@ export const Profile = () => {
 
   const updateProfile = async (e) => {
     try {
-      e.preventDefault()
+      if (e) e.preventDefault()
+
       setLoading(true)
 
-      const updates = {
-        id: user.id,
+      const updateProfile = {
         username,
         website,
         avatar_url,
-        updated_at: new Date(),
+        updated_at: new Date().toISOString().split('T')[0],
       }
 
-      let { error } = await supabase.from('profiles').upsert(updates, {
-        returning: 'minimal',
-      })
+      if (updateAvatarUrl) updateProfile.avatar_url = updateAvatarUrl
+
+      let { data, error } = await supabase
+        .from('profiles')
+        .update(updateProfile)
+        .eq('id', user.id)
 
       if (error) throw error
 
@@ -145,7 +149,8 @@ export const Profile = () => {
               url={avatar_url}
               onUpload={(url) => {
                 setAvatarUrl(url)
-                updateProfile({ username, website, avatar_url: url })
+                setUpdateAvatarUrl(url)
+                updateProfile()
               }}
               isForUpdating={true}
               width={200}

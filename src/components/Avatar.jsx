@@ -3,7 +3,7 @@ import { supabase } from '../supabase'
 
 import VisuallyHidden from '@reach/visually-hidden'
 
-import defaultUser from '../assets/default.png'
+import defaultUser from '../assets/default.svg'
 
 export const Avatar = ({
   url,
