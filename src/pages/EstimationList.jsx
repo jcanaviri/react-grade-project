@@ -86,7 +86,7 @@ export const EstimationList = () => {
                       className={`group-hover:text-white text-xl ${estimation.estimationType.icon}`}
                     ></i>
                     <div>
-                      ({estimation.estimationType.name})
+                      ({estimation.estimationType.name}){' '}
                       {estimation.estimationType.description}
                     </div>
 
@@ -119,8 +119,8 @@ export const EstimationList = () => {
           </ul>
 
           {estimations.length > 0 && (
-            <p className="p-4 text-slate-900">
-              Selecciona una de tus estimaciones creadas para comenzar 😁
+            <p className="p-4 text-sm text-slate-900">
+              Selecciona una de tus estimaciones creadas para comenzar
             </p>
           )}
         </>

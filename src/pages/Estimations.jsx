@@ -155,7 +155,7 @@ export const Estimations = () => {
             realizar tu estimación
           </p>
           <div className="px-2 md:px-44 py-2 md:py-5">
-            <img className="w-full h-full" src={buildingImage} alt="building" />
+            <img className="w-1/2 mx-auto" src={buildingImage} alt="building" />
           </div>
           <div className="flex gap-2">
             <button

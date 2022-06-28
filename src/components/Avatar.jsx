@@ -5,7 +5,13 @@ import VisuallyHidden from '@reach/visually-hidden'
 
 import defaultUser from '../assets/default.png'
 
-export const Avatar = ({ url, onUpload, isForUpdating }) => {
+export const Avatar = ({
+  url,
+  onUpload,
+  isForUpdating,
+  width = 32,
+  height = 32,
+}) => {
   const [avatarUrl, setAvatarUrl] = useState(null)
   const [uploading, setUploading] = useState(false)
 
@@ -58,20 +64,23 @@ export const Avatar = ({ url, onUpload, isForUpdating }) => {
   }
 
   return (
-    <div aria-live="polite">
+    <div className="flex flex-col justify-center items-center">
       <img
         src={avatarUrl ? avatarUrl : defaultUser}
         alt={avatarUrl ? 'Avatar' : 'No image'}
-        style={{ height: 32, width: 32 }}
+        style={{ height, width }}
       />
       {uploading ? (
-        'Uploading...'
+        <p>Actualizando...</p>
       ) : (
         <>
           {isForUpdating && (
             <>
-              <label className="button primary block" htmlFor="single">
-                Upload an avatar
+              <label
+                className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 flex items-center my-4"
+                htmlFor="single"
+              >
+                Actualizar avatar
               </label>
               <VisuallyHidden>
                 <input

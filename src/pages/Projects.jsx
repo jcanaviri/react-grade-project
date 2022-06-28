@@ -85,7 +85,7 @@ export const Projects = () => {
         </div>
       )}
 
-      <div className="mt-10 sm:mt-0">
+      <div className="mt-10 mb-16 sm:mt-0">
         <div className="px-4">
           <div className="mt-5 mb-5 md:mt-0 w-full">
             {/* Form begins */}

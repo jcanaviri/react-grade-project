@@ -26,14 +26,13 @@ export const UserIconMenu = ({ floatingStyles, email, signOut }) => {
         Ajustes
       </a>
       <hr className="md:min-w-full border-yellow-300" />
-      <a
-        href="#"
+      <p
         className="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-slate-700 hover:bg-yellow-50 pb-4"
         onClick={() => signOut()}
       >
         <i className="bx bx-log-out mr-2 text-xl relative top-1"></i>
         Cerrar Session
-      </a>
+      </p>
     </div>
   )
 }
