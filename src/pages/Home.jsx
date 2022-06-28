@@ -197,7 +197,7 @@ export const Home = () => {
                   <input
                     type="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500"
-                    placeholder="John"
+                    placeholder="Tu nombre..."
                   />
                 </div>
                 <div className="md:w-full flex flex-col md:ml-6 md:mt-0 mt-4">
@@ -205,7 +205,7 @@ export const Home = () => {
                     Email:
                   </label>
                   <input
-                    placeholder="Tu email"
+                    placeholder="Tu email..."
                     type="name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500"
                   />
@@ -218,7 +218,7 @@ export const Home = () => {
                     Mensaje:
                   </label>
                   <textarea
-                    placeholder="Tu mensaje"
+                    placeholder="Tu mensaje..."
                     role="textbox"
                     type="name"
                     rows="5"

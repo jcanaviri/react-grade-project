@@ -45,7 +45,7 @@ export const Auth = () => {
           <Navbar linkItems={linkItems} />
 
           <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-            <div className="max-w-md w-full space-y-8 border border-yellow-100 rounded-lg shadow-sm p-8">
+            <div className="max-w-md w-full space-y-8 border rounded-lg shadow-sm p-8">
               {showAlert && (
                 <Alert
                   message="Un email ha sido enviado a tu correo"
@@ -55,14 +55,19 @@ export const Auth = () => {
               )}
 
               <div>
-                <img className="mx-auto h-12 w-auto" src={logo} alt="logo" />
-                <h2 className="mt-6 text-center text-3xl text-slate-900">
+                <div className="flex items-center justify-center">
+                  <img className="h-12 w-12" src={logo} alt="logo" />
+                  <span className="text-slate-600 hover:text-slate-700 ml-2 font-medium">
+                    Estimate App
+                  </span>
+                </div>
+                <h2 className="mt-6 text-center text-2xl text-slate-900">
                   Ingresa mediante un link mágico
                 </h2>
                 <p className="mt-2 text-center text-sm text-gray-600">
                   <a
                     href="#"
-                    className="font-medium text-yellow-500 hover:text-yellow-600"
+                    className="font-medium text-yellow-400 hover:text-yellow-500"
                   >
                     Se enviara un link a tu correo y mediante este podras
                     acceder a tu cuenta
@@ -86,11 +91,18 @@ export const Auth = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 focus:outline-none focus:ring-1 focus:ring-yellow-500 focus:border-yellow-500"
-                      placeholder="Tu email"
+                      placeholder="Tu email..."
                       required
                     />
                   </div>
                 </div>
+
+                <p className="text-sm text-justify font-extralight">
+                  <i className="bx bx-question-mark"></i> Un link mágico se
+                  enviara a tu correo electrónico mediante este podrás acceder a
+                  tus datos almacenados, si no posees datos almacenados
+                  estos se comenzaran a almacenar inmediatamente los uses.
+                </p>
 
                 <div>
                   <button
@@ -116,6 +128,17 @@ export const Auth = () => {
               </form>
             </div>
           </div>
+
+          {/* Footer */}
+          <footer className="fixed bottom-0 left-0 right-0 bg-gray-200 text-center lg:text-left">
+            <div className="text-slate-800 text-center p-2 text-sm">
+              © 2022 Todos los derechos estan reservados -
+              <a className="text-slate-800 ml-2" href="">
+                jcanaviri20@gmail.com
+              </a>
+            </div>
+          </footer>
+          {/* Footer */}
         </>
       )}
     </>

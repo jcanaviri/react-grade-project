@@ -73,14 +73,16 @@ export const SideBar = () => {
         <div className="flex items-center">
           <Link
             to="/dashboard"
-            className="md:block text-left md:pb-2 text-slate-600 whitespace-nowrap text-sm uppercase font-bold p-2"
+            className="md:block text-left md:pb-2 text-slate-600 whitespace-nowrap text-sm font-bold p-2"
           >
             <img
-              className="w-8 h-8 inline-block relative -top-1"
+              className="w-9 h-9 inline-block relative -top-1"
               src={logo}
-              alt="app logo"
+              alt="logo"
             />
-            <span className="ml-2">Estimate App</span>
+            <span className="text-slate-600 hover:text-slate-700 ml-2 font-medium">
+              Estimate App
+            </span>
           </Link>
         </div>
         {/* Logo */}
@@ -140,11 +142,8 @@ export const SideBar = () => {
           {/* Sidebar List */}
           {sidebarItems.map((sidebarItem, index) => (
             <div key={index}>
-              <p className="md:min-w-full uppercase text-slate-800 text-xs font-bold flex items-center justify-between tracking-wide p-2">
-                {/* prettier-ignore */}
-                <i className={`${sidebarItem.icon} mr-2 text-lg group-hover:text-slate-900`}></i>
+              <p className="md:min-w-full text-slate-800 text-sm font-semibold my-2">
                 {sidebarItem.title}
-                <i className="bx bx-chevron-down text-lg cursor-pointer"></i>
               </p>
               <ul className="md:flex-col md:min-w-full flex flex-col list-none">
                 {sidebarItem.links.map((listItem, i) => (

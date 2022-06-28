@@ -1,13 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-// Protected Route
-import { ProtectedRoute } from './utils/ProtectedRoute'
-
 // Layouts
 import { DashboardLayout } from './Layouts/DashboardLayout'
 
-// Context Providers
-import { AppProviders } from './utils/AppProviders'
+// App Utilities
+import { AppProviders, ProtectedRoute } from './utils'
 
 // Pages
 import {
