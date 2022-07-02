@@ -10,3 +10,7 @@ export { EstimationTypes } from './EstimationTypes'
 export { EstimationList } from './EstimationList'
 export { MakeEstimation } from './MakeEstimation'
 export { Tags } from './Tags'
+
+export { FunctionPoints } from './FunctionPoints'
+export { HistoryPoints } from './HistoryPoints'
+export { ObjectPoints } from './ObjectPoints'
