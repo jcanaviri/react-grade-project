@@ -22,7 +22,7 @@ import {
   MakeEstimation,
 } from './pages'
 
-export default () => {
+export const App = () => {
   return (
     <BrowserRouter>
       <AppProviders>
