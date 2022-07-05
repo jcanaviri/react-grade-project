@@ -20,6 +20,7 @@ import {
   EstimationTypes,
   Tags,
   MakeEstimation,
+  Results,
 } from './pages'
 
 export const App = () => {
@@ -51,6 +52,9 @@ export const App = () => {
 
             {/* Estimation Types Routes */}
             <Route path='estimations-types' element={<ProtectedRoute><EstimationTypes /></ProtectedRoute>} />
+
+            {/* Results Routes */}
+            <Route path='results/list' element={<ProtectedRoute><Results /></ProtectedRoute>} />
           </Route>
         </Routes>
       </AppProviders>

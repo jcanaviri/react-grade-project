@@ -14,3 +14,5 @@ export { Tags } from './Tags'
 export { FunctionPoints } from './FunctionPoints'
 export { HistoryPoints } from './HistoryPoints'
 export { ObjectPoints } from './ObjectPoints'
+
+export { Results } from './Results'

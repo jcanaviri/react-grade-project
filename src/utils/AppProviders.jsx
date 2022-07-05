@@ -5,6 +5,7 @@ import {
   TagProvider,
   EstimationProvider,
   EstimationTypeProvider,
+  ResultsProvider,
 } from '../context'
 
 export const AppProviders = ({ children }) => {
@@ -13,10 +14,12 @@ export const AppProviders = ({ children }) => {
       <ProjectProvider>
         <TagProvider>
           <EstimationProvider>
-            {/* prettier-ignore */}
-            <EstimationTypeProvider>
+            <ResultsProvider>
+              {/* prettier-ignore */}
+              <EstimationTypeProvider>
                 {children}
             </EstimationTypeProvider>
+            </ResultsProvider>
           </EstimationProvider>
         </TagProvider>
       </ProjectProvider>
