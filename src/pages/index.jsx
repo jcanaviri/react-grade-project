@@ -16,3 +16,4 @@ export { HistoryPoints } from './HistoryPoints'
 export { ObjectPoints } from './ObjectPoints'
 
 export { Results } from './Results'
+export { Result } from './Result'

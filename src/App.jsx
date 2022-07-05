@@ -21,6 +21,7 @@ import {
   Tags,
   MakeEstimation,
   Results,
+  Result
 } from './pages'
 
 export const App = () => {
@@ -55,6 +56,7 @@ export const App = () => {
 
             {/* Results Routes */}
             <Route path='results/list' element={<ProtectedRoute><Results /></ProtectedRoute>} />
+            <Route path='results/:id' element={<ProtectedRoute><Result /></ProtectedRoute>} />
           </Route>
         </Routes>
       </AppProviders>

@@ -4,7 +4,9 @@ import {
   createResultRequest,
   deleteResultRequest,
   getAllResultsRequest,
+  getOneResultDataRequest,
   getOneResultRequest,
+  getResultsDataRequest,
   updateResultRequest,
 } from '../api/results'
 
@@ -23,6 +25,10 @@ export const ResultsProvider = ({ children }) => {
 
   const deleteResult = (id) => deleteResultRequest(id)
 
+  const getResultsData = () => getResultsDataRequest()
+
+  const getOneResultData = (id) => getOneResultDataRequest(id)
+
   return (
     <ResultsContext.Provider
       value={{
@@ -31,6 +37,8 @@ export const ResultsProvider = ({ children }) => {
         getOneResult,
         updateResult,
         deleteResult,
+        getResultsData,
+        getOneResultData,
       }}
     >
       {children}

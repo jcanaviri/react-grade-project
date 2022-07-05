@@ -50,12 +50,34 @@ export const updateResultRequest = async (id, result) => {
 
 export const deleteResultRequest = async (id) => {
   try {
-    const { data, error } = await supabase
-      .from('results')
-      .delete()
-      .eq('id', id)
+    const { data, error } = await supabase.from('results').delete().eq('id', id)
     if (error) throw error
 
+    return data
+  } catch (error) {
+    return error.message
+  }
+}
+
+export const getResultsDataRequest = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('results')
+      .select(`*, project: projects (*), estimation: estimations (*)`)
+    if (error) throw error
+    return data
+  } catch (error) {
+    return error.message
+  }
+}
+
+export const getOneResultDataRequest = async (id) => {
+  try {
+    const { data, error } = await supabase
+      .from('results')
+      .select(`*, project: projects (*), estimation: estimations (*)`)
+      .eq('id', id)
+    if (error) throw error
     return data
   } catch (error) {
     return error.message
