@@ -58,14 +58,13 @@ export const sidebarItems = [
     title: 'Conceptos y Teoría',
     icon: 'bx bxs-graduation',
     links: [
-      { title: 'Reseña Historica', to: '', icon: 'bx bx-book-reader' },
-      { title: 'Métrica', to: '', icon: 'bx bx-package' },
-      { title: 'Modelos', to: '', icon: 'bx bx-border-none' },
+      {
+        title: 'Reseña Historica',
+        to: '/dashboard/history',
+        icon: 'bx bx-book-reader',
+      },
+      { title: 'Métrica', to: '/dashboard/metrics', icon: 'bx bx-package' },
+      { title: 'Modelos', to: '/dashboard/models', icon: 'bx bx-border-none' },
     ],
-  },
-  {
-    title: 'Documentación',
-    icon: 'bx bxs-file-doc',
-    links: [{ title: 'Ir a documentación', to: '', icon: 'bx bx-link-alt' }],
-  },
+  }
 ]

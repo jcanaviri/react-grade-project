@@ -171,7 +171,8 @@ export const Home = () => {
                   </div>
                   <div>
                     <a
-                      href="#"
+                      href="https://github.com/jcanaviri/react-grade-project.git"
+                      target="_blank"
                       className="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
                     >
                       Ir a la documentación

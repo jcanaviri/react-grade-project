@@ -21,7 +21,11 @@ import {
   Tags,
   MakeEstimation,
   Results,
-  Result
+  Result,
+  History,
+  Metrics,
+  Models,
+  Docs,
 } from './pages'
 
 export const App = () => {
@@ -57,6 +61,15 @@ export const App = () => {
             {/* Results Routes */}
             <Route path='results/list' element={<ProtectedRoute><Results /></ProtectedRoute>} />
             <Route path='results/:id' element={<ProtectedRoute><Result /></ProtectedRoute>} />
+
+            {/* Theory and Concepts */}
+            <Route path='history' element={<ProtectedRoute><History /></ProtectedRoute>} />
+            <Route path='metrics' element={<ProtectedRoute><Metrics /></ProtectedRoute>} />
+            <Route path='models' element={<ProtectedRoute><Models /></ProtectedRoute>} />
+
+            {/* Documentation */}
+            <Route path='docs' element={<ProtectedRoute><Docs /></ProtectedRoute>} />
+
           </Route>
         </Routes>
       </AppProviders>

@@ -166,6 +166,24 @@ export const SideBar = () => {
             </div>
           ))}
 
+          <p className="md:min-w-full text-slate-800 text-sm font-semibold my-2">
+            Documentación
+          </p>
+          <ul className="md:flex-col md:min-w-full flex flex-col list-none">
+            <li className="items-center px-4 rounded border border-transparent hover:bg-yellow-50 hover:border-yellow-300 group">
+              <a
+                href="https://github.com/jcanaviri/react-grade-project.git"
+                target="_blank"
+                className="text-xs py-3 font-semibold block text-slate-800 group-hover:text-slate-900"
+              >
+                <i
+                  className={`bx bx-link-alt mr-2 text-sm group-hover:text-slate-900`}
+                ></i>
+                Ir a documentación
+              </a>
+            </li>
+          </ul>
+
           <hr className="my-4 md:min-w-full border-yellow-300" />
           {/* Close Session */}
           <div className="mx-auto">

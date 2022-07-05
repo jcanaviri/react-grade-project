@@ -17,3 +17,9 @@ export { ObjectPoints } from './ObjectPoints'
 
 export { Results } from './Results'
 export { Result } from './Result'
+
+export { History } from './History'
+export { Metrics } from './Metrics'
+export { Models } from './Models'
+
+export { Docs } from './Docs'
