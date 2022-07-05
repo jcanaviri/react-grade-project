@@ -55,7 +55,9 @@ export const MakeEstimation = () => {
           <Loader />
         ) : (
           <>
-            {type.name === 'PO' && <ObjectPoints />}
+            {type.name === 'PO' && (
+              <ObjectPoints project={project} estimation={estimation} />
+            )}
             {type.name === 'PF' && (
               <FunctionPoints project={project} estimation={estimation} />
             )}
