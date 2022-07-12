@@ -13,4 +13,3 @@
 * ⚛️ Conocer un poco react
 * 🤔 Contar con una cuenta en supabase
 * 🏗️ Saber un poco de base de datos relacionales
-s
