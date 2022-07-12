@@ -16,7 +16,7 @@ export const ProjectProvider = ({ children }) => {
   // CRUD of projects
   const createProject = (project) => createProjectRequest(project)
 
-  const getAllProjects = () => getAllProjectsRequest()
+  const getAllProjects = (user_id) => getAllProjectsRequest(user_id)
 
   const getOneProject = (id) => getOneProjectRequest(id)
 

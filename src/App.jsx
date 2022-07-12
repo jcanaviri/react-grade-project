@@ -26,6 +26,8 @@ import {
   Metrics,
   Models,
   Docs,
+  MethodExplanation,
+  Settings
 } from './pages'
 
 export const App = () => {
@@ -41,6 +43,8 @@ export const App = () => {
             <Route path='' element={<ProtectedRoute><Dashboard /></ProtectedRoute>}/>
 
             <Route path="profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+            
+            <Route path="settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
 
             {/* Projects Routes */}
             <Route path="projects" element={<ProtectedRoute><Projects /></ProtectedRoute>} />
@@ -69,6 +73,9 @@ export const App = () => {
 
             {/* Documentation */}
             <Route path='docs' element={<ProtectedRoute><Docs /></ProtectedRoute>} />
+
+            {/* What is this type of method */}
+            <Route path='method-explanation/:type' element={<ProtectedRoute><MethodExplanation /></ProtectedRoute>} />
 
           </Route>
         </Routes>

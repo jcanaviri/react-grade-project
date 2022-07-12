@@ -5,6 +5,8 @@ import { useEstimations } from '../context/EstimationsContext'
 
 import { Loader, Modal } from '../components'
 
+import noData from '../assets/no-data.svg'
+
 export const EstimationList = () => {
   const { getAllEstimations, deleteEstimation } = useEstimations()
 
@@ -74,6 +76,15 @@ export const EstimationList = () => {
         <Loader />
       ) : (
         <>
+          {estimations.length <= 0 && (
+            <div className="flex flex-col justify-center items-center my-4">
+              <img src={noData} alt="no data" className="w-72" />
+              <small className="my-4">
+                Parece que aun no haz creado una estimación para tu proyecto 🤔
+              </small>
+            </div>
+          )}
+
           <ul className="p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm leading-6">
             {estimations.map((estimation) => (
               <li
@@ -119,8 +130,8 @@ export const EstimationList = () => {
           </ul>
 
           {estimations.length > 0 && (
-            <p className="p-4 text-sm text-slate-900">
-              Selecciona una de tus estimaciones creadas para comenzar
+            <p className="p-4 ml-4 text-sm text-slate-900">
+              Selecciona una de tus estimaciones creadas para comenzar 🧑‍💻
             </p>
           )}
         </>

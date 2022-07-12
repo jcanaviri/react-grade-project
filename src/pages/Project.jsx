@@ -87,7 +87,7 @@ export const Project = () => {
   }, [])
 
   return (
-    <div className="p-4">
+    <div className="p-4 mb-8">
       {isModalActive && (
         <Modal
           title={modalMessage.title}
@@ -339,17 +339,6 @@ export const Project = () => {
               </div>
             </form>
           )}
-
-          <hr className="my-4 md:min-w-full border-yellow-100" />
-          {/* Details section ends */}
-
-          <h3 className="font-semibold text-slate-900">
-            Estimaciones del Projecto
-          </h3>
-          <hr className="my-4 md:min-w-full border-yellow-100" />
-
-          <h3 className="font-semibold text-slate-900">Nuevas estimaciones</h3>
-          <hr className="my-4 md:min-w-full border-yellow-100" />
         </>
       )}
     </div>

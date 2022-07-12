@@ -2,17 +2,20 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import buildingImage from '../assets/building.svg'
+import noData from '../assets/no-data.svg'
 
 import { Alert, Loader } from '../components'
 
 import { useProjects } from '../context/ProjectContext'
 import { useEstimations } from '../context/EstimationsContext'
 import { useEstimationType } from '../context/EstimationTypeContext'
+import { useAuth } from '../context/AuthContext'
 
 export const Estimations = () => {
   const { getAllProjects } = useProjects()
   const { createEstimation, getEstimationByProjectAndType } = useEstimations()
   const { getAllEstimationTypes } = useEstimationType()
+  const { user } = useAuth()
 
   const [projects, setProjects] = useState([])
   const [selectedProject, setSelectedProject] = useState()
@@ -33,7 +36,7 @@ export const Estimations = () => {
   const loadProjects = async () => {
     try {
       setIsLoading(true)
-      const data = await getAllProjects()
+      const data = await getAllProjects(user.id)
       setProjects(data)
 
       const estimationTypes = await getAllEstimationTypes()
@@ -203,26 +206,39 @@ export const Estimations = () => {
                   </div>
                 ) : (
                   <>
-                    {projects.map((project) => (
-                      <li
-                        key={project.id}
-                        className="hover:bg-yellow-400 hover:ring-yellow-400 hover:cursor-pointer group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm"
-                        onClick={() => pickProject(project.id)}
-                      >
-                        <div className="flex flex-col">
-                          <p className="group-hover:text-white font-bold text-slate-900">
-                            {project.name}
-                          </p>
-                          <p className="font-semibold group-hover:text-yellow-50">
-                            {project.description}
-                          </p>
-                          <p className="group-hover:text-yellow-50">
-                            <span className="font-semibold">Creado el:</span>{' '}
-                            {project.created_at}
-                          </p>
-                        </div>
-                      </li>
-                    ))}
+                    {projects.map ? (
+                      <>
+                        {projects.map((project) => (
+                          <li
+                            key={project.id}
+                            className="hover:bg-yellow-400 hover:ring-yellow-400 hover:cursor-pointer group rounded-md p-3 bg-white ring-1 ring-slate-200 shadow-sm"
+                            onClick={() => pickProject(project.id)}
+                          >
+                            <div className="flex flex-col">
+                              <p className="group-hover:text-white font-bold text-slate-900">
+                                {project.name}
+                              </p>
+                              <p className="font-semibold group-hover:text-yellow-50">
+                                {project.description}
+                              </p>
+                              <p className="group-hover:text-yellow-50">
+                                <span className="font-semibold">
+                                  Creado el:
+                                </span>{' '}
+                                {project.created_at}
+                              </p>
+                            </div>
+                          </li>
+                        ))}
+                      </>
+                    ) : (
+                      <div className="flex flex-col justify-center items-center my-4">
+                        <img src={noData} alt="no data" className="w-32" />
+                        <small className="my-4">
+                          Parece que aun no haz creado un proyecto 🤔
+                        </small>
+                      </div>
+                    )}
                   </>
                 )}
               </>
@@ -304,7 +320,7 @@ export const Estimations = () => {
               className="focus:outline-none text-white bg-green-400 hover:bg-green-500 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5"
               onClick={saveProject}
             >
-              {isSaving ? 'Guardando...': 'Guardar y Continuar'}
+              {isSaving ? 'Guardando...' : 'Guardar y Continuar'}
             </button>
           </div>
         </>

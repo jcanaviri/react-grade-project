@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+import noData from '../assets/no-data.svg'
+
 import { useResults } from '../context/ResultsContext'
 import { useEstimationType } from '../context/EstimationTypeContext'
 
-import { Modal } from '../components'
+import { Modal, Loader } from '../components'
 
 export const Results = () => {
   const { getResultsData, deleteResult } = useResults()
@@ -73,11 +75,20 @@ export const Results = () => {
         />
       )}
 
-      <ul className="p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm leading-6">
-        {isLoading ? (
-          <p>Cargando...</p>
-        ) : (
-          <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          {results.length <= 0 && (
+            <div className="flex w-full flex-col justify-center items-center my-4">
+              <img src={noData} alt="no data" className="w-72" />
+              <small className="my-4">
+                Parece que aun no haz almacenado ningún resultado 🤔
+              </small>
+            </div>
+          )}
+
+          <ul className="p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm leading-6">
             {results.map((result) => (
               <li
                 key={result.id}
@@ -139,26 +150,9 @@ export const Results = () => {
                 </Link>
               </li>
             ))}
-            <li className="flex">
-              <Link
-                to="/dashboard/estimations/list"
-                className="hover:border-yellow-400 hover:bg-white hover:text-yellow-400 group w-full flex flex-col items-center justify-center rounded-md border-2 border-dashed border-slate-300 text-sm leading-6 text-slate-900 font-medium py-3"
-              >
-                <svg
-                  className="group-hover:text-yellow-400 mb-1 text-slate-400"
-                  width="20"
-                  height="20"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M10 5a1 1 0 0 1 1 1v3h3a1 1 0 1 1 0 2h-3v3a1 1 0 1 1-2 0v-3H6a1 1 0 1 1 0-2h3V6a1 1 0 0 1 1-1Z" />
-                </svg>
-                Nuevo Estimación
-              </Link>
-            </li>
-          </>
-        )}
-      </ul>
+          </ul>
+        </>
+      )}
     </>
   )
 }

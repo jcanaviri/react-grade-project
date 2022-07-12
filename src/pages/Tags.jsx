@@ -7,6 +7,7 @@ export const Tags = () => {
   const [tags, setTags] = useState([])
   const [text, setText] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const [isTagLoading, setIsTagLoading] = useState(false)
   const [showAlert, setShowAlert] = useState(false)
   const [alertMessage, setAlertMessage] = useState({
     message: '',
@@ -15,8 +16,15 @@ export const Tags = () => {
   const { getAllTags, createTag, deleteTag, getByName } = useTags()
 
   const loadTags = async () => {
-    const data = await getAllTags()
-    setTags(data)
+    try {
+      setIsTagLoading(true)
+      const data = await getAllTags()
+      setTags(data)
+    } catch (error) {
+      console.error(error)
+    } finally {
+      setIsTagLoading(false)
+    }
   }
 
   const handleSubmit = async (e) => {
@@ -111,20 +119,28 @@ export const Tags = () => {
             <Loader />
           ) : (
             <div className="mt-8 flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <span
-                  className="bg-gray-200 border rounded-md py-2 px-4 flex items-center text-sm"
-                  key={tag.id}
-                >
-                  <p>{tag.name}</p>
-                  <button
-                    className="flex items-center ml-4"
-                    onClick={() => onDeleteTag(tag.id)}
-                  >
-                    <i className="bx bx-x hover:scale-150"></i>
-                  </button>
-                </span>
-              ))}
+              {isTagLoading ? (
+                <div className="flex w-full justify-center items-center">
+                  <Loader />
+                </div>
+              ) : (
+                <>
+                  {tags.map((tag) => (
+                    <span
+                      className="bg-gray-200 border rounded-md py-2 px-4 flex items-center text-sm"
+                      key={tag.id}
+                    >
+                      <p>{tag.name}</p>
+                      <button
+                        className="flex items-center ml-4"
+                        onClick={() => onDeleteTag(tag.id)}
+                      >
+                        <i className="bx bx-x hover:scale-150"></i>
+                      </button>
+                    </span>
+                  ))}
+                </>
+              )}
             </div>
           )}
         </div>

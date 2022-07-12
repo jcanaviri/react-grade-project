@@ -23,3 +23,6 @@ export { Metrics } from './Metrics'
 export { Models } from './Models'
 
 export { Docs } from './Docs'
+
+export { MethodExplanation } from './MethodExplanation'
+export { Settings } from './Settings'

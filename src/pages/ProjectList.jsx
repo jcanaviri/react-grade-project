@@ -3,14 +3,18 @@ import { Link } from 'react-router-dom'
 
 import { useProjects } from '../context/ProjectContext'
 
+import { Loader } from '../components'
+import { useAuth } from '../context/AuthContext'
+
 export const ProjectList = () => {
   const [projects, setProjects] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const { getAllProjects } = useProjects()
+  const { user } = useAuth()
 
   const loadProjects = async () => {
     try {
-      const data = await getAllProjects()
+      const data = await getAllProjects(user.id)
       setProjects(data)
     } catch (error) {
       console.log(error)
@@ -30,7 +34,7 @@ export const ProjectList = () => {
       </header>
       <ul className="p-4 sm:px-8 sm:pt-6 sm:pb-8 lg:p-4 xl:px-8 xl:pt-6 xl:pb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm leading-6">
         {isLoading ? (
-          <p>Cargando...</p>
+          <Loader />
         ) : (
           <>
             {projects.map((project) => (
